@@ -1,0 +1,65 @@
+@use "variables" as *;
+
+@mixin modeButton() {
+  .mode-button-container {
+    align-items: center;
+    display: flex;
+
+    .form-check {
+      margin: 0;
+      padding: 0;
+
+      .form-check-input {
+        background-color: $purple;
+        background-image: url("../../../assets/images/ball-switch.svg");
+        margin: 0.7rem;
+
+        &:checked {
+          border-color: $purple;
+        }
+
+        &:focus {
+          box-shadow: none;
+        }
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+
+    .sun-icon {
+      height: 1.5rem;
+      width: 1.5rem;
+    }
+
+    .moon-icon {
+      height: 1.5rem;
+      width: 1.5rem;
+    }
+  }
+}
+
+:host-context(.light) {
+  @include modeButton();
+
+  .sun-icon {
+    background-image: url("../../../assets/images/light/icon-sun-dark.svg");
+  }
+
+  .moon-icon {
+    background-image: url("../../../assets/images/light/icon-moon-dark.svg");
+  }
+}
+
+:host-context(.dark) {
+  @include modeButton();
+
+  .sun-icon {
+    background-image: url("../../../assets/images/dark/icon-sun-light.svg");
+  }
+
+  .moon-icon {
+    background-image: url("../../../assets/images/dark/icon-moon-light.svg");
+  }
+}

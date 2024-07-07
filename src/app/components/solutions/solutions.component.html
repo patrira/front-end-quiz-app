@@ -1,0 +1,56 @@
+<section class="app-solutions-container">
+  <div class="quizzes-container">
+
+    @if(!quizz().questions) {
+      @for(quizz of data; track quizz.title; let idx = $index) {
+        <app-solution [style.--image-color]="quizz.color" (click)="startQuizz(idx)">
+          <img [src]="quizz.icon" [alt]="quizz.title">
+          <p>{{ quizz.title }}</p>
+        </app-solution>
+      }
+    } @else {
+      @if(!this.dataService.getTestFinished()()) {
+        @for(option of question.options; track option; let idx = $index) {
+          <app-solution [style.--image-color]="'#F4F6FA'"
+          (click)="onClickAnswer(idx)"
+          [selected]="idx === answerSelected()"
+          [variant]="solutionVariant(idx)"
+          [class.disabled]="answerSubmitted">
+            <div class="responses-icon">
+              {{ responsesEnum[idx] }}
+            </div>
+            <p>{{ option }}</p>
+          </app-solution>
+        }
+      } @else {
+        <div class="quizz-finish-container">
+          <div class="quizz-finish-icon">
+            <img [src]="quizz().icon" [alt]="quizz().title" [style.--image-color]="quizz().color">
+            <p>{{ quizz().title }}</p>
+          </div>
+          <div class="quizz-finish-results">
+            <h1>
+              {{ totalCorrect }}
+            </h1>
+            <p>out of 10</p>
+          </div>
+
+
+        </div>
+
+      }
+
+
+      @if(!answerSubmitted) {
+        <button (click)="submitAnswer()" class="submit-button" [disabled]="answerSelected() === -1">Submit Answer</button>
+      }
+      @if(answerSubmitted && !this.dataService.getTestFinished()()) {
+        <button (click)="nextQuestion()" class="next-button">Next Question</button>
+      }
+      @if(this.dataService.getTestFinished()()) {
+        <button (click)="playAgain()" class="play-again-button">Play Again</button>
+      }
+    }
+  </div>
+
+</section>

@@ -1,0 +1,105 @@
+@use 'variables' as *;
+
+@mixin solutionContainer($textColor, $bgColor) {
+
+  .app-solution-container {
+    background-color: $bgColor;
+    border: 2px solid $bgColor;
+    border-radius: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    transition: 0.3s ease-out;
+
+    .app-solution-answer {
+      display: flex;
+      gap: 2rem;
+      transition: 0.3s ease-out;
+    }
+
+    .responses-icon {
+      align-self: center;
+      align-items: center;
+      background-color: #F4F6FA;
+      border-radius: 0.5rem;
+      display: flex;
+      font-size: 1.3rem;
+      font-weight: bold;
+      height: 3.5rem;
+      justify-content: center;
+      width: 3.5rem;
+
+      @media(max-width: $responsive) {
+        min-width: 50px;
+      }
+    }
+
+    img {
+      border-radius: 0.5rem;
+      padding: 0.5rem;
+      background-color: var(--image-color);
+    }
+
+    p {
+      color: $textColor;
+      font-weight: bold;
+      transition: 0.3s ease-out;
+    }
+
+    &:hover {
+      border: 2px solid $purple;
+      cursor: pointer;
+
+      p {
+        color: $purple;
+        transform: translateX(5px);
+      }
+    }
+
+    .correct-icon, .incorrect-icon {
+      background-color: unset;
+    }
+
+    &.selected {
+      border: 2px solid $purple;
+      color: $purple;
+      p {
+        color: $purple;
+      }
+    }
+
+    &.correct {
+      border: 2px solid $green;
+      color: $pureWhite;
+      .responses-icon {
+        background-color: $green;
+      }
+      p {
+        color: $green;
+      }
+    }
+
+    &.incorrect {
+      border: 2px solid $red;
+      color: $pureWhite;
+      .responses-icon {
+        background-color: $red;
+      }
+      p {
+        color: $red;
+      }
+    }
+  }
+}
+
+
+:host-context(.light) {
+  @include solutionContainer($darkNavy, $pureWhite);
+  .app-solution-container {
+    box-shadow: 0 0 5px 0 $lightBluish;
+  }
+}
+
+:host-context(.dark) {
+  @include solutionContainer($pureWhite, $navy);
+}

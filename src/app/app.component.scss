@@ -1,0 +1,32 @@
+@use 'variables' as *;
+
+.main-app-container {
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  font-family: 'Rubik';
+  height: 100%;
+  padding: 5%;
+
+  &.light {
+    background-color: $lightGrey;
+    background-image: url('../assets/images/light/pattern-background-desktop-light.svg');
+  }
+
+  &.dark {
+    background-color: $darkNavy;
+    background-image: url('../assets/images/dark/pattern-background-desktop-dark.svg');
+  }
+
+  .main-questions-container {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr 1fr;
+
+    @media(max-width: $responsive) {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+}

@@ -1,0 +1,10 @@
+@use 'variables' as *;
+
+progress {
+  accent-color: $purple;
+  width: 80%;
+
+  @media(max-width: $responsive) {
+    width: 100%;
+  }
+}

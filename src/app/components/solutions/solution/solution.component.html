@@ -1,0 +1,11 @@
+<div class="app-solution-container" [class.selected]="selected" [ngClass]="variant">
+  <div class="app-solution-answer">
+    <ng-content/>
+  </div>
+  @if(variant === 'correct') {
+    <img src="./assets/images/icon-correct.svg" alt="Correct" class="correct-icon">
+  }
+  @if(variant === 'incorrect') {
+    <img src="./assets/images/icon-incorrect.svg" alt="Incorrect" class="incorrect-icon">
+  }
+</div>
