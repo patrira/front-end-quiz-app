@@ -7,8 +7,8 @@ import { ProgressComponent } from '../progress/progress.component';
 
 @Component({
   selector: 'app-questions',
-  standalone: true,
-  imports: [NgTemplateOutlet, QuestionDirective, ProgressComponent],
+  // standalone: true,
+  // imports: [NgTemplateOutlet, QuestionDirective, ProgressComponent,QuestionsComponent],
   templateUrl: './questions.component.html',
   styleUrl: './questions.component.scss',
   encapsulation: ViewEncapsulation.ShadowDom

@@ -5,12 +5,12 @@ import { Component, Input, ViewEncapsulation } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './progress.component.html',
-  styleUrl: './progress.component.scss',
+  styleUrls: ['./progress.component.scss'], // Corrected property name
   encapsulation: ViewEncapsulation.ShadowDom
 })
 export class ProgressComponent {
 
-  @Input() maxValue = 10
+  @Input() maxValue = 10;
 
   @Input() actualValue = 0;
 

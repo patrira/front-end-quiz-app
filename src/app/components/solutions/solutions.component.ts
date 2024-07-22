@@ -1,4 +1,4 @@
-import { Component, effect, inject, signal } from '@angular/core';
+import { Component, effect, inject,signal } from '@angular/core';
 import { SolutionComponent } from './solution/solution.component';
 import { DataService } from '../../services/data.service';
 import { Question } from '../../models/question.model';
