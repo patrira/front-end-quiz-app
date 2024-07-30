@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ModeButtonComponent } from './mode-button.component';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { By } from '@angular/platform-browser';
 
 describe('ModeButtonComponent', () => {
   let component: ModeButtonComponent;
@@ -8,41 +8,34 @@ describe('ModeButtonComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ModeButtonComponent],
-      schemas: [NO_ERRORS_SCHEMA],
+      imports: [ModeButtonComponent]
     }).compileComponents();
-  });
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(ModeButtonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create the ModeButtonComponent', () => {
+  it('should create the mode button component', () => {
     expect(component).toBeTruthy();
   });
 
   it('should emit clickButton event when onClick is called', () => {
-    
-    const spy = jest.spyOn(component.clickButton, 'emit');
+    jest.spyOn(component.clickButton, 'emit');
 
-    
-    component['onClick']();
+    component.onClick();
 
-    
-    expect(spy).toHaveBeenCalled();
+    expect(component.clickButton.emit).toHaveBeenCalled();
   });
 
-  it('should trigger onClick when button is clicked', () => {
-    
-    const spy = jest.spyOn(component.clickButton, 'emit');
+  it('should emit clickButton event when button is clicked', () => {
+    jest.spyOn(component.clickButton, 'emit');
 
-   
-    const buttonElement = fixture.nativeElement.querySelector('button'); 
-    buttonElement.click();
+    const button = fixture.debugElement.query(By.css('button'));
+    if (button) {
+      button.triggerEventHandler('click', null);
+    }
 
-    
-    expect(spy).toHaveBeenCalled();
+    expect(component.clickButton.emit).toHaveBeenCalled();
   });
 });

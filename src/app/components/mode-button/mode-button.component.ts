@@ -11,7 +11,7 @@ export class ModeButtonComponent {
 
   @Output() clickButton = new EventEmitter;
 
-  protected onClick(): void {
+  public onClick(): void {
     this.clickButton.emit();
   }
 }

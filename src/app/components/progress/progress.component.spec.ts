@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ProgressComponent } from './progress.component';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { By } from '@angular/platform-browser';
 
 describe('ProgressComponent', () => {
   let component: ProgressComponent;
@@ -8,18 +8,15 @@ describe('ProgressComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ProgressComponent],
-      schemas: [NO_ERRORS_SCHEMA], // Use to ignore template errors not relevant to the test
+      imports: [ProgressComponent]
     }).compileComponents();
-  });
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(ProgressComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create the ProgressComponent', () => {
+  it('should create the progress component', () => {
     expect(component).toBeTruthy();
   });
 
@@ -31,13 +28,13 @@ describe('ProgressComponent', () => {
     expect(component.actualValue).toBe(0);
   });
 
-  it('should update maxValue correctly', () => {
+  it('should update maxValue when input changes', () => {
     component.maxValue = 20;
     fixture.detectChanges();
     expect(component.maxValue).toBe(20);
   });
 
-  it('should update actualValue correctly', () => {
+  it('should update actualValue when input changes', () => {
     component.actualValue = 5;
     fixture.detectChanges();
     expect(component.actualValue).toBe(5);

@@ -14,4 +14,6 @@ export class ModeService {
   getMode(): WritableSignal<string> {
     return this.mode;
   }
+  
+  
 }

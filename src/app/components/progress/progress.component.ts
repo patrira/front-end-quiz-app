@@ -5,7 +5,7 @@ import { Component, Input, ViewEncapsulation } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './progress.component.html',
-  styleUrls: ['./progress.component.scss'], // Corrected property name
+  styleUrls: ['./progress.component.scss'], 
   encapsulation: ViewEncapsulation.ShadowDom
 })
 export class ProgressComponent {

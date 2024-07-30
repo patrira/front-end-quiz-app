@@ -13,7 +13,7 @@ export class HeaderComponent {
 
   modeService = inject(ModeService);
 
-  protected onClick(): void {
+  public onClick(): void {
     this.modeService.changeMode();
   }
 }
